@@ -4,13 +4,12 @@ const express = require("express"); //import express framework
 
 const mongoose = require("mongoose"); // import mongoose for mongoDB interactions
 
-const cors = require("cors")
+const cors = require("cors");
 
 const app = express(); //spin up the express framework server
 
 const taskRouter = require("./routes/taskRouter"); // import the taskRouter for task-related routes.
 const notFound = require("./middlewares/notfound.js"); // import a middleware to handle 404 errors
-
 
 app.use(express.json()); // this is a middleware to pass incoming json requests from post man allowing access to the request.body
 
@@ -21,8 +20,7 @@ app.use(notFound); // use the custom 404 middleware for handling unmatched route
 const port = 3000; //define the port number for the server
 
 // CORS: means Cross Origin Request Sharing: When the frontend and backend are from different origins (domain, ports or protocols) and the backend hasn't been configure to accept request from the frontend origin
-app.use(cors())
-
+app.use(cors({origin: "http://localhost:5173/"}));
 
 const start = async () => {
   try {
